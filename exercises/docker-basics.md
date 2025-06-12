@@ -20,12 +20,12 @@ Before you start this exercise, ensure that you have Docker installed on your ma
 1. Open a terminal or command prompt on your machine.
 
 2. Verify that Docker is installed correctly by running the following command:
-```
+```bash
 docker --version
 ```
 
 4. Pull the official "hello-world" Docker image and run a container from it:
-```
+```bash
 docker run hello-world
 ```
 
@@ -38,7 +38,7 @@ docker run hello-world
 2. Inside the project directory, create a file named "Dockerfile" (without any file extension).
 
 3. Open the "Dockerfile" with a text editor and add the following content:
-```
+```bash
 FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y nginx
@@ -51,12 +51,12 @@ CMD ["nginx", "-g", "daemon off;"]
 4. Save the "Dockerfile".
 
 5. Build a Docker image from the "Dockerfile":
-```
+```bash
 docker build -t my-nginx-image .
 ```
 
 7. Run a container from the custom image:
-```
+```bash
 docker run -d -p 8080:80 my-nginx-image
 ```
 
@@ -66,17 +66,17 @@ docker run -d -p 8080:80 my-nginx-image
 ## Step 3: Managing Containers
 
 1. List all running containers:
-```
+```bash
 docker ps
 ```
 
 3. Stop a running container:
-```
+```bash
 docker stop <container_id>
 ```
 
 5. Remove a container (Note: The container must be stopped before removing):
-```
+```bash
 docker rm <container_id>
 ```
 
@@ -97,7 +97,7 @@ Before you start this advanced exercise, make sure you have completed the "Getti
 2. Inside the project directory, create a file named "docker-compose.yml".
 
 3. Open the "docker-compose.yml" with a text editor and add the following content:
-```
+```bash
 version: '3'
 services:
   web:
@@ -113,7 +113,7 @@ services:
 2. Navigate to the directory containing the "docker-compose.yml" file.
 
 3. Start the Docker Compose setup:
-```
+```bash
 docker-compose up -d
 ```
 5. Docker Compose will download the Nginx image and start the container.
@@ -121,7 +121,7 @@ docker-compose up -d
 6. Open your web browser and navigate to http://localhost:8080. You should see the default Nginx page, indicating that your Nginx container started successfully using Docker Compose.
 ## Step 3: Stop and Clean Up
 1. To stop the Docker Compose setup, run the following command:
-```
+```bash
 docker-compose down
 ```
 2. Docker Compose will stop and remove the containers defined in the "docker-compose.yml" file.

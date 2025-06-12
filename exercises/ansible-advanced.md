@@ -25,21 +25,21 @@ To install Ansible on Ubuntu, you can use the following steps:
 1. Open a terminal.
 
 2. Update the package lists using the following command:
-   ```
+   ```bash
    sudo apt update
    ```
 3. Install the software-properties-common package, which provides the add-apt-repository command:
-   ```
+   ```bash
    sudo apt install software-properties-common
    ```
 4. Add the Ansible PPA repository to your system:
-   ```
+   ```bash
    sudo add-apt-repository --yes --update ppa:ansible/ansible
    ```
    - This command configures the PPA on your system and ensures that it is up to date.
 
 6. Install Ansible:
-   ```
+   ```bash
    sudo apt install ansible
    ```
 7. The installation process will download and install Ansible along with its dependencies.
@@ -48,7 +48,7 @@ To install Ansible on Ubuntu, you can use the following steps:
 On older Ubuntu distributions, the software-properties-common package is called python-software-properties. You may need to use apt-get instead of apt in older versions.
 If you encounter an error related to the -u or --update flag, it means that your Ubuntu version does not support it. In that case, you can omit the --update flag from the add-apt-repository command.
 Once the installation is complete, you can verify that Ansible is installed by running the following command:
-```
+```bash
 ansible --version
 ```
 - This command will display the Ansible version information if the installation was successful.
@@ -58,7 +58,7 @@ ansible --version
 1. Roles provide a way to organize and structure your Ansible code by grouping related tasks, variables, and templates into reusable units. They promote code reusability and modularity in your Ansible projects.
 
 2. Ansible roles follow a specific directory structure. Here's an example directory structure for an Ansible role named `webserver`:
-   ```
+   ```bash
    webserver/
    ├── ansible.cfg
    ├── tasks/
@@ -115,7 +115,7 @@ ansible --version
 3. Each file in the directory structure serves a specific purpose. Here's an example code snippet for each file:
 ### ansible.cfg
 This file specifies the configuration for your Ansible project. It is placed in the root directory of your project. In the given example, it contains the following configuration:
-```
+```bash
 [defaults]
 inventory = inventory/
 roles_path = roles/
@@ -123,7 +123,7 @@ roles_path = roles/
 ### tasks/main.yml:
 The tasks/main.yml file contains the main tasks to be performed by the role. In a production environment, it might look like this:
 
-```
+```bash
 ---
 - name: Install and configure web server
   apt:
@@ -147,13 +147,13 @@ The tasks/main.yml file contains the main tasks to be performed by the role. In 
 ```
 ### inventory files
 inventory/ALL
-```
+```bash
 [all:children]
 webservers
 database_servers
 ```
 inventory/webservers
-```
+```bash
 [webservers_group]
 webserver1 ansible_host=192.168.1.101
 
@@ -166,7 +166,7 @@ webserver1 ansible_host=192.168.1.101
 # webserver3 ansible_host=192.168.1.103 ansible_connection=ssh ansible_ssh_user=my_server_username ansible_ssh_pass=my_server_ssh_password
 ```
 inventory/database_servers:
-```
+```bash
 [database_servers_group]
 dbserver1 ansible_host=192.168.1.201
 
@@ -180,7 +180,7 @@ dbserver1 ansible_host=192.168.1.201
 ```
 ### group_vars/all.yml
 The group_vars/all.yml file contains variable files specific to all hosts in a particular group. In a production environment, it might look like this:
-```
+```bash
 ---
 webserver_domain: example.com
 webserver_ssl_certificate: /etc/ssl/certs/example.com.crt
@@ -193,7 +193,7 @@ database_server: dbserver1
 ```
 ### host_vars/webserver1.yml
 The host_vars/webserver.yml file contains variable files specific to a particular host. In a production environment, it might look like this:
-```
+```bash
 ---
 webserver_ip: 192.168.1.101
 ansible_connection: ssh
@@ -209,7 +209,7 @@ webserver_port: 8080
 #     ansible_ssh_pass: my_server1_ssh_password
 ```
 ### host_vars/webserver2.yml
-```
+```bash
 ---
 webserver_ip: 192.168.1.102
 ansible_connection: ssh
@@ -218,7 +218,7 @@ ansible_ssh_pass: my_webserver2_ssh_password
 webserver_port: 8080
 ```
 ### host_vars/webserver3.yml
-```
+```bash
 ---
 webserver_ip: 192.168.1.103
 ansible_connection: ssh
@@ -228,7 +228,7 @@ webserver_port: 8080
 ```
 ### templates/index.html.j2:
 The templates/index.html.j2 file contains the Jinja2 template for the web server's index page. In a production environment, it might look like this:
-```
+```bash
 <!DOCTYPE html>
 <html>
 <head>
@@ -241,14 +241,14 @@ The templates/index.html.j2 file contains the Jinja2 template for the web server
 ```
 ### vars/main.yml
 The vars/main.yml file contains role-specific variables. In a production environment, it might look like this:
-```
+```bash
 ---
 webserver_port: 80
 webserver_document_root: "/var/www/html"
 ```
 ### meta/main.yml
 The meta/main.yml file contains metadata about the role, such as dependencies. In a production environment, it might look like this:
-```
+```bash
 ---
 dependencies:
   - role: common
@@ -256,7 +256,7 @@ dependencies:
 ```
 ### handlers/main.yml
 The handlers/main.yml file contains handler tasks that define actions triggered by events. In a production environment, it might look like this:
-```
+```bash
 ---
 - name: Restart Apache
   service:
@@ -270,20 +270,20 @@ The handlers/main.yml file contains handler tasks that define actions triggered 
 ```
 ### files/myfile.conf
 The files/myfile.conf file contains static files that need to be copied to remote hosts. In a production environment, it might contain the configuration for the application:
-```
+```bash
 # Configuration for MyApp
 key = value
 ```
 ### defaults/main.yml
 The defaults/main.yml file contains default variable files that provide default values. In a production environment, it might look like this:
-```
+```bash
 ---
 myapp_version: "1.0"
 myapp_timeout: 30
 ```
 ### library/mymodule.py
-The library/mymodule.py filecontains custom Ansible modules written in **Python**. In a production environment, it might look like this:
-```
+The library/mymodule.py file contains custom Ansible modules written in **Python**. In a production environment, it might look like this:
+```bash
 import os
 
 from ansible.module_utils.basic import AnsibleModule
@@ -310,7 +310,7 @@ if __name__ == '__main__':
 ```
 ### lookup_plugins/mylookup.py
 The lookup_plugins/mylookup.py file contains custom lookup plugins written in **Python**. In a production environment, it might look like this:
-```
+```bash
 from ansible.errors import AnsibleError, AnsibleParserError
 from ansible.plugins.lookup import LookupBase
 
@@ -326,7 +326,7 @@ class MyLookup(LookupBase):
 ```
 ### filter_plugins/myfilter.py
 The filter_plugins/myfilter.py file contains custom filter plugins written in **Python**. In a production environment, it might look like this:
-```
+```bash
 def myfilter(value):
     # Custom filter logic
     return value.upper()
@@ -339,7 +339,7 @@ class FilterModule(object):
 ```
 ### requirements.yml
 The requirements.yml file specifies any external role dependencies. In a production environment, it might look like this:
-```
+```bash
 ---
 - src: https://github.com/example/role1.git
   version: master
@@ -354,7 +354,7 @@ The requirements.yml file specifies any external role dependencies. In a product
 
 3. To install an Ansible role from Ansible Galaxy, use the ansible-galaxy command. For example, to install the nginx role, run the following command:
 
-```
+```bash
 ansible-galaxy install nginx
 ```
 This command installs the nginx role, along with any role dependencies specified in the `meta/main.yml` file of the role.

@@ -28,7 +28,7 @@ In this exercise, you will learn how to create dashboards using Grafana. Grafana
 4. Move the Grafana directory to a location in your system.
 
 5. Start Grafana using the following command:
-   ```
+   ```bash
    ./bin/grafana-server
    ```
 6. Grafana will start and be accessible through the default web interface at http://localhost:3000.
