@@ -123,7 +123,7 @@ Before starting this exercise, ensure that you have the following:
 
     # Set the entry point or default command
     CMD ["/bin/bash"]
-    ```yaml
+    ```dockerfile
 4. In your .gitlab-ci.yml file, add the following stages and jobs:
     ```
     stages:
