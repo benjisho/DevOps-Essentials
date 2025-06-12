@@ -22,16 +22,19 @@ In this exercise, you will learn how to use Terraform to provision infrastructur
 1. Open a terminal.
 
 2. Run the following commands to add the HashiCorp GPG key and repository to your system:
+
    ```bash
    wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
    sudo apt update
    ```
 3. Install Terraform using the package manager:
+
    ```bash
    sudo apt install terraform
    ```
 4. Verify the Terraform installation by running the following command:
+
    ```bash
    terraform version
    ```
@@ -341,6 +344,7 @@ You should see the Terraform version displayed in the output.
 
 ## Step 3: Provision Infrastructure with Terraform
 1. Run the following command in your project directory to initialize Terraform and download the necessary provider plugins:
+
     ```bash
     terraform init
     ```

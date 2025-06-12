@@ -28,6 +28,7 @@ In this exercise, you will learn how to create dashboards using Grafana. Grafana
 4. Move the Grafana directory to a location in your system.
 
 5. Start Grafana using the following command:
+
    ```bash
    ./bin/grafana-server
    ```

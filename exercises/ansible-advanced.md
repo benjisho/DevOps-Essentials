@@ -25,20 +25,24 @@ To install Ansible on Ubuntu, you can use the following steps:
 1. Open a terminal.
 
 2. Update the package lists using the following command:
+
    ```bash
    sudo apt update
    ```
 3. Install the software-properties-common package, which provides the add-apt-repository command:
+
    ```bash
    sudo apt install software-properties-common
    ```
 4. Add the Ansible PPA repository to your system:
+
    ```bash
    sudo add-apt-repository --yes --update ppa:ansible/ansible
    ```
    - This command configures the PPA on your system and ensures that it is up to date.
 
 6. Install Ansible:
+
    ```bash
    sudo apt install ansible
    ```
@@ -48,6 +52,7 @@ To install Ansible on Ubuntu, you can use the following steps:
 On older Ubuntu distributions, the software-properties-common package is called python-software-properties. You may need to use apt-get instead of apt in older versions.
 If you encounter an error related to the -u or --update flag, it means that your Ubuntu version does not support it. In that case, you can omit the --update flag from the add-apt-repository command.
 Once the installation is complete, you can verify that Ansible is installed by running the following command:
+
 ```bash
 ansible --version
 ```

@@ -165,18 +165,21 @@ minikube service multi-container-service --url
 kubectl delete -f app.yaml
 ```
 2. To check the status of pods, you can use the following command:
+
 ```bash
 kubectl get pods
 ```
 > If the resources have been successfully deleted, you will not see any pods related to the multi-container application in the output.
 
 3. Check the status of services, you can use the following command:
+
 ```bash
 kubectl get services
 ```
 > If the resources have been deleted, you will not see the service you created for the multi-container application in the output.
 
 4. You can use the describe command to get more detailed information about a specific pod or service. For example:
+
 ```bash
 kubectl describe pod <pod_name>
 kubectl describe service <service_name>

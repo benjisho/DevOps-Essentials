@@ -31,26 +31,32 @@ sudo apt update
 sudo apt install openjdk-17-jre
 ```
 3. Verify the Java installation by running the following command:
+
 ```bash
 java -version
 ```
 4. Import the Jenkins repository key:
+
 ```bash
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo gpg --dearmor --yes -o /usr/share/keyrings/jenkins-keyring.gpg
 ```
 5. Add the Jenkins repository to your system:
+
 ```bash
 echo 'deb [signed-by=/usr/share/keyrings/jenkins-keyring.gpg] https://pkg.jenkins.io/debian-stable binary/' | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 ```
 6. Update your package list:
+
 ```bash
 sudo apt update
 ```
 7. Install Jenkins:
+
 ```bash
 sudo apt install jenkins
 ```
 8. Jenkins will be installed as a systemd service, and it will start automatically. You can check the status using the following command:
+
 ```bash
 sudo systemctl status jenkins
 ```

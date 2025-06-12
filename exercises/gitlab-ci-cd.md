@@ -42,6 +42,7 @@ Before starting this exercise, ensure that you have the following:
 
 2. The .gitlab-ci.yml file follows a YAML syntax and allows you to define the stages of your pipeline and the jobs that run within each stage.
    - Here's an example of a basic .gitlab-ci.yml file:
+
         ```yaml
         stages:
             - build
