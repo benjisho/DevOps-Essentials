@@ -113,7 +113,7 @@ You should see the Terraform version displayed in the output.
     }
     ```
   4. In the `variables.tf` file, define input variables that allow customization of your Terraform configuration.
-   
+
       **Example `variables.tf`:**
 
         ```
@@ -198,7 +198,7 @@ You should see the Terraform version displayed in the output.
     output "bucket_arn" {
     description = "ARN of the created S3 bucket"
     value       = aws_s3_bucket.example.arn
-    }  
+    }
     ```
 
     *Vultr*
@@ -325,7 +325,7 @@ You should see the Terraform version displayed in the output.
     ```
 
     **Example `environments/staging/outputs.tf`:**
-    
+
     ```
     output "staging_aws_bucket_arn" {
       description = "ARN of the created staging AWS S3 bucket"

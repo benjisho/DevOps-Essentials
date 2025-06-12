@@ -19,7 +19,7 @@ Before starting this exercise, ensure that you have the following:
 
 - A Vultr account for setup/access/install GitLab environment.
 - Basic knowledge of Linux command-line interface (CLI).
-  
+
 ## Step 1: Setup/Install GitLab on your Vultr environment
 
 1. You may create an account on https://gitlab.com/ and set up a project there.

@@ -71,10 +71,10 @@ In this exercise, you will learn how to implement monitoring using Prometheus. P
    ```
    global:
      scrape_interval: 15s
-   
+
      external_labels:
        monitor: 'codelab-monitor'
-   
+
    scrape_configs:
      - job_name: 'prometheus'
        scrape_interval: 5s

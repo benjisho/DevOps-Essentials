@@ -16,7 +16,7 @@ In this exercise, you will dive deeper into Ansible by exploring advanced topics
 - Basic knowledge of Ansible concepts and playbook development
 - Basic knowledge of Ubuntu command-line interface (CLI) and package management (apt).
 - Ansible installed on your Ubuntu machine (refer to Step 1 for installation instructions).
-- Internet access on the Ubuntu machine for downloading the updates, packeges and roles from Ansible Galaxy.
+- Internet access on the Ubuntu machine for downloading the updates, packages and roles from Ansible Galaxy.
 - A target environment and access to it (virtual machines or containers, or remote servers) where you can test your Ansible playbooks and roles.
 
 ## Step 1: Installing Ansible on Ubuntu
@@ -202,7 +202,7 @@ ansible_ssh_pass: my_webserver1_ssh_password
 webserver_port: 8080
 
 # Alternatively to the groupvars you may write it this way:
-# webserver_ip: 
+# webserver_ip:
 #   - hostname: 192.168.1.101
 #     ansible_connection: ssh
 #     ansible_ssh_user: my_server1_username

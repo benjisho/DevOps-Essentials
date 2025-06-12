@@ -68,7 +68,7 @@ In this exercise, you will learn how to create dashboards using Grafana. Grafana
 
 4. Adjust the panel size, position, and other settings as needed.
 
-5. Repeat the above ## Steps to add more panels to the dashboard.
+5. Repeat the above steps to add more panels to the dashboard.
 
 ## Step 6: Customize Dashboard and Panels
 1. Use the Grafana editor to customize the dashboard layout, colors, and styles.
