@@ -28,7 +28,8 @@ In this exercise, you will learn how to create dashboards using Grafana. Grafana
 4. Move the Grafana directory to a location in your system.
 
 5. Start Grafana using the following command:
-   ```
+
+   ```bash
    ./bin/grafana-server
    ```
 6. Grafana will start and be accessible through the default web interface at http://localhost:3000.
@@ -68,7 +69,7 @@ In this exercise, you will learn how to create dashboards using Grafana. Grafana
 
 4. Adjust the panel size, position, and other settings as needed.
 
-5. Repeat the above ## Steps to add more panels to the dashboard.
+5. Repeat the above steps to add more panels to the dashboard.
 
 ## Step 6: Customize Dashboard and Panels
 1. Use the Grafana editor to customize the dashboard layout, colors, and styles.

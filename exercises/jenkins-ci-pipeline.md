@@ -26,32 +26,38 @@ In this exercise, you will learn how to set up a CI pipeline using Jenkins. By t
 1. Open a terminal.
 
 2. Update the package lists and install OpenJDK 17 (Java Runtime Environment):
-```
+```bash
 sudo apt update
 sudo apt install openjdk-17-jre
 ```
 3. Verify the Java installation by running the following command:
-```
+
+```bash
 java -version
 ```
 4. Import the Jenkins repository key:
-```
+
+```bash
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo gpg --dearmor --yes -o /usr/share/keyrings/jenkins-keyring.gpg
 ```
 5. Add the Jenkins repository to your system:
-```
+
+```bash
 echo 'deb [signed-by=/usr/share/keyrings/jenkins-keyring.gpg] https://pkg.jenkins.io/debian-stable binary/' | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 ```
 6. Update your package list:
-```
+
+```bash
 sudo apt update
 ```
 7. Install Jenkins:
-```
+
+```bash
 sudo apt install jenkins
 ```
 8. Jenkins will be installed as a systemd service, and it will start automatically. You can check the status using the following command:
-```
+
+```bash
 sudo systemctl status jenkins
 ```
 9. By default, Jenkins listens on port 8080. Access the Jenkins web interface using your browser by visiting `http://<your-server-IP-or-domain>:8080`.
@@ -60,7 +66,7 @@ sudo systemctl status jenkins
 
 ### Jenkins File Structure
 After installation, Jenkins creates the following file structure:
-```
+```bash
 jenkins_home/
 ├── config/
 │ ├── config.xml
@@ -87,7 +93,7 @@ jenkins_home/
 ## Step 2: Access Jenkins and set up the initial configuration
  1. Open a web browser and navigate to http://localhost:8080 (assuming you're accessing it on your local machine).
  2. Retrieve the Jenkins initial admin password:
-    ```
+    ```bash
     sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     ```
  3. Copy the password from the terminal.

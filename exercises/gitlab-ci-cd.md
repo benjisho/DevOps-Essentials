@@ -19,7 +19,7 @@ Before starting this exercise, ensure that you have the following:
 
 - A Vultr account for setup/access/install GitLab environment.
 - Basic knowledge of Linux command-line interface (CLI).
-  
+
 ## Step 1: Setup/Install GitLab on your Vultr environment
 
 1. You may create an account on https://gitlab.com/ and set up a project there.
@@ -36,12 +36,14 @@ Before starting this exercise, ensure that you have the following:
 3. In the project settings, navigate to the "Set Up CI/CD" section. This section allows you to configure and manage the CI/CD pipeline for your project.
 
 ## Step 3: Basic Configuration of CI/CD pipeline
+
 1. To configure your CI/CD pipeline, you need to define stages and jobs using the .gitlab-ci.yml file.
    - This file should be located in the root directory of your GitLab project.
 
 2. The .gitlab-ci.yml file follows a YAML syntax and allows you to define the stages of your pipeline and the jobs that run within each stage.
    - Here's an example of a basic .gitlab-ci.yml file:
-        ```
+
+        ```yaml
         stages:
             - build
             - test
@@ -97,7 +99,7 @@ Before starting this exercise, ensure that you have the following:
 1. To configure your CI/CD pipeline, you need to define stages and jobs using the .gitlab-ci.yml file.
 2. This file should be located in the root directory of your GitLab project.
 3. Create a Dockerfile in the root directory of your project with the following content:
-    ```
+    ```dockerfile
     FROM ubuntu:latest
 
     # Set environment variables
@@ -121,7 +123,7 @@ Before starting this exercise, ensure that you have the following:
 
     # Set the entry point or default command
     CMD ["/bin/bash"]
-    ```
+    ```dockerfile
 4. In your .gitlab-ci.yml file, add the following stages and jobs:
     ```
     stages:

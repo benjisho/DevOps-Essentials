@@ -1,7 +1,14 @@
 # DevOps-Essentials
 
-Welcome to the DevOps Essentials repository! This guide is designed to help you expand your knowledge and skills in DevOps.
-Whether you're a network or a system engineer looking to enhance your expertise or a beginner exploring the world of DevOps, this repository provides step-by-step guidance, practical exercises, and best practices to empower you in the DevOps domain.
+Welcome to the DevOps Essentials repository! This guide is designed to help you
+expand your knowledge and skills in DevOps.
+Whether you're a network or a system engineer looking to enhance your expertise or a beginner exploring the world of DevOps,
+this repository provides step-by-step guidance, practical exercises, and best practices to empower you in the DevOps domain.
+
+## Getting Started
+
+Clone this repository and explore the **exercises** directory.
+Each Markdown file contains a self-paced lab focused on a specific DevOps tool or concept.
 
 ## Table of Contents
 

@@ -19,11 +19,11 @@ Before you start this exercise, ensure that you have the following prerequisites
 1. Open a terminal or command prompt.
 
 2. Verify that kubectl is installed and configured correctly:
-```
+```bash
 kubectl version
 ```
 3. Deploy a simple pod using a YAML file. Create a file named pod.yaml and add the following content:
-```
+```bash
 apiVersion: v1
 kind: Pod
 metadata:
@@ -36,20 +36,20 @@ spec:
         - containerPort: 80
 ```
 4. Apply the configuration to create the pod:
-```
+```bash
 kubectl apply -f pod.yaml
 ```
 5. Verify that the pod is running:
-```
+```bash
 kubectl get pods
 ```
 6. Describe the pod to see more details:
-```
+```bash
 kubectl describe pod my-pod
 ```
 ## Step 2: Deploying a Service
 1. Create a service to expose the pod you deployed in the previous step. Create a file named service.yaml and add the following content:
-```
+```bash
 apiVersion: v1
 kind: Service
 metadata:
@@ -64,22 +64,22 @@ spec:
   type: NodePort
 ```
 2. Apply the configuration to create the service:
-```
+```bash
 kubectl apply -f service.yaml
 ```
 3. Get the URL to access the service:
-```
+```bash
 minikube service my-service --url
 ```
 4. Open the provided URL in your web browser, and you should see the default Nginx page.
 
 ## Step 3: Scaling the Application
 1. Scale the number of replicas for the pod to 3:
-```
+```bash
 kubectl scale --replicas=3 pod my-pod
 ```
 2. Verify that the pods are running and have different pod names:
-```
+```bash
 kubectl get pods -o wide
 ```
 ## Conclusion
@@ -96,7 +96,7 @@ In this advanced exercise, we will explore how to deploy a multi-container appli
 1. Create a new directory for your multi-container application project.
 
 2. Inside the project directory, create a file named app.yaml and add the following content:
-```
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -140,44 +140,47 @@ spec:
 3. Use the appropriate Kubernetes objects (Deployments, Services, Volumes, etc.) to define the multi-container application.
 
 4. Apply the configuration to deploy the multi-container application:
-```
+```bash
 kubectl apply -f app.yaml
 ```
 ## Step 2: Verify the Deployment
 1. Verify that all the pods and services for your multi-container application are running:
-```
+```bash
 kubectl get pods,svc
 ```
 2. Get the URL to access the service:
-```
+```bash
 minikube service multi-container-service --url
 ```
 3. Access your multi-container application through the exposed service.
     - Option 1: Open the provided URL in your web browser.
     - Option 2: you can use curl or any web browser tool to access the service from the terminal:
-      ```
+      ```bash
       curl <URL>
       ```
 
 ## Step 3: Clean Up
 1. Delete the resources created for the multi-container application:
-```
+```bash
 kubectl delete -f app.yaml
 ```
 2. To check the status of pods, you can use the following command:
-```
+
+```bash
 kubectl get pods
 ```
 > If the resources have been successfully deleted, you will not see any pods related to the multi-container application in the output.
 
 3. Check the status of services, you can use the following command:
-```
+
+```bash
 kubectl get services
 ```
 > If the resources have been deleted, you will not see the service you created for the multi-container application in the output.
 
 4. You can use the describe command to get more detailed information about a specific pod or service. For example:
-```
+
+```bash
 kubectl describe pod <pod_name>
 kubectl describe service <service_name>
 ```
