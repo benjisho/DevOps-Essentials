@@ -45,7 +45,7 @@ You should see the Terraform version displayed in the output.
 
 2. Inside the project directory, create the following files and directories for organizing your Terraform configuration:
 
-    ```bash
+    ```text
     ├── main.tf
     ├── variables.tf
     ├── outputs.tf
@@ -54,11 +54,7 @@ You should see the Terraform version displayed in the output.
     │   │   ├── main.tf
     │   │   ├── variables.tf
     │   │   └── outputs.tf
-    │ └── vultr/
-    │ ├── main.tf
-    │ ├── variables.tf
-    │ └── outputs.tf
-    │   └── module3/
+    │   └── vultr/
     │       ├── main.tf
     │       ├── variables.tf
     │       └── outputs.tf
@@ -79,16 +75,16 @@ You should see the Terraform version displayed in the output.
 
     **Example `main.tf`:**
 
-    ```bash
+    ```hcl
     terraform {
       required_providers {
         aws = {
           source  = "hashicorp/aws"
-          version = "3.48.0"
+          version = "~> 5.0"
         }
         vultr = {
           source  = "vultr/vultr"
-          version = "2.19.0"
+          version = "~> 2.0"
         }
       }
     }
@@ -119,7 +115,7 @@ You should see the Terraform version displayed in the output.
 
       **Example `variables.tf`:**
 
-        ```bash
+        ```hcl
         variable "aws_region" {
           description = "AWS region"
           type        = string
@@ -161,7 +157,7 @@ You should see the Terraform version displayed in the output.
 
     **Example `outputs.tf`:**
 
-    ```bash
+    ```hcl
     output "aws_instance_id" {
       description = "ID of the created AWS EC2 instance"
       value       = aws_instance.example.id
@@ -179,28 +175,27 @@ You should see the Terraform version displayed in the output.
 
     **Example `modules/aws/main.tf`:**
 
-    ```bash
+    ```hcl
     resource "aws_s3_bucket" "example" {
-    bucket = var.bucket_name
-    acl    = "private"
+      bucket = var.bucket_name
     }
     ```
 
     **Example `modules/aws/variables.tf`:**
 
-    ```bash
+    ```hcl
     variable "bucket_name" {
-    description = "Name of the S3 bucket"
-    type        = string
+      description = "Name of the S3 bucket"
+      type        = string
     }
     ```
 
     **Example `modules/aws/outputs.tf`:**
 
-    ```bash
-    output "bucket_arn" {
-    description = "ARN of the created S3 bucket"
-    value       = aws_s3_bucket.example.arn
+    ```hcl
+    output "aws_bucket_arn" {
+      description = "ARN of the created S3 bucket"
+      value       = aws_s3_bucket.example.arn
     }
     ```
 
@@ -208,17 +203,17 @@ You should see the Terraform version displayed in the output.
 
     **Example modules/vultr/main.tf:**
 
-    ```bash
+    ```hcl
     resource "vultr_block_storage" "example" {
-    label = var.vultr_block_storage_label
-    size  = var.vultr_block_storage_size
-    region = var.vultr_region
+      label  = var.vultr_block_storage_label
+      size   = var.vultr_block_storage_size
+      region = var.vultr_region
     }
     ```
 
     **Example modules/vultr/variables.tf:**
 
-    ```bash
+    ```hcl
     variable "vultr_block_storage_label" {
       description = "Label for the Vultr block storage"
       type        = string
@@ -232,7 +227,7 @@ You should see the Terraform version displayed in the output.
 
     **Example modules/vultr/outputs.tf:**
 
-    ```bash
+    ```hcl
     output "vultr_block_storage_id" {
       description = "ID of the created Vultr block storage"
       value       = vultr_block_storage.example.id
@@ -241,15 +236,15 @@ You should see the Terraform version displayed in the output.
 7. Inside the environments directory, create separate directories for each environment, such as prod and staging. Each environment should have its own `main.tf`, `variables.tf`, and `outputs.tf` files.
     **Example `environments/prod/main.tf`:**
 
-    ```bash
+    ```hcl
     module "aws_resources" {
-      source = "../modules/aws"
+      source = "../../modules/aws"
 
-      aws_bucket_name = var.prod_aws_bucket_name
+      bucket_name = var.prod_aws_bucket_name
     }
 
     module "vultr_resources" {
-      source = "../modules/vultr"
+      source = "../../modules/vultr"
 
       vultr_block_storage_label = var.prod_vultr_block_storage_label
       vultr_block_storage_size  = var.prod_vultr_block_storage_size
@@ -258,7 +253,7 @@ You should see the Terraform version displayed in the output.
 
     **Example `environments/prod/variables.tf`:**
 
-    ```bash
+    ```hcl
     variable "prod_aws_bucket_name" {
       description = "Name of the production AWS S3 bucket"
       type        = string
@@ -278,7 +273,7 @@ You should see the Terraform version displayed in the output.
 
     **Example `environments/prod/outputs.tf`:**
 
-    ```bash
+    ```hcl
     output "prod_aws_bucket_arn" {
       description = "ARN of the created production AWS S3 bucket"
       value       = module.aws_resources.aws_bucket_arn
@@ -293,15 +288,15 @@ You should see the Terraform version displayed in the output.
 
     **Example `environments/staging/main.tf`:**
 
-    ```bash
+    ```hcl
     module "aws_resources" {
-      source = "../modules/aws"
+      source = "../../modules/aws"
 
-      aws_bucket_name = var.staging_aws_bucket_name
+      bucket_name = var.staging_aws_bucket_name
     }
 
     module "vultr_resources" {
-      source = "../modules/vultr"
+      source = "../../modules/vultr"
 
       vultr_block_storage_label = var.staging_vultr_block_storage_label
       vultr_block_storage_size  = var.staging_vultr_block_storage_size
@@ -310,7 +305,7 @@ You should see the Terraform version displayed in the output.
 
     **Example `environments/staging/variables.tf`:**
 
-    ```bash
+    ```hcl
     variable "staging_aws_bucket_name" {
       description = "Name of the staging AWS S3 bucket"
       type        = string
@@ -329,7 +324,7 @@ You should see the Terraform version displayed in the output.
 
     **Example `environments/staging/outputs.tf`:**
 
-    ```bash
+    ```hcl
     output "staging_aws_bucket_arn" {
       description = "ARN of the created staging AWS S3 bucket"
       value       = module.aws_resources.aws_bucket_arn
@@ -356,25 +351,22 @@ You should see the Terraform version displayed in the output.
     ```bash
     terraform plan
     ```
-4. To plan and apply module-specific changes, navigate to the module directory and run the Terraform commands with the -target flag. For example:
-    ```bash
-    terraform plan -target=module.module1
-    terraform apply -target=module.module1
-    ```
-5. To plan and apply environment-specific changes, navigate to the environment directory and run the Terraform commands. For example:
+4. To plan and apply environment-specific changes, navigate to the environment directory and run the Terraform commands. For example:
     ```bash
     terraform plan
     terraform apply
     ```
-6. If the plan looks as expected, apply the infrastructure changes by running:
+5. If the plan looks as expected, apply the infrastructure changes by running:
     ```bash
     terraform apply
     ```
-7. You may be prompted to confirm the changes before proceeding.
+6. You may be prompted to confirm the changes before proceeding.
 
-8. Terraform will provision the defined infrastructure resources based on the configuration.
+7. Terraform will provision the defined infrastructure resources based on the configuration.
 
-9. Verify that the infrastructure has been provisioned correctly by checking the resources in your cloud provider's console or using other appropriate tools.
+8. Verify that the infrastructure has been provisioned correctly by checking the resources in your cloud provider's console or using other appropriate tools.
+
+> **Best practice:** Avoid using `-target` for routine workflows. The Terraform CLI documentation recommends reserving `-target` for exceptional recovery or debugging scenarios because it can create partial plans.
 
 ## Step 4: Manage Infrastructure with Terraform
 1. As your infrastructure evolves, make changes to the Terraform configuration to reflect the desired state of your infrastructure.
